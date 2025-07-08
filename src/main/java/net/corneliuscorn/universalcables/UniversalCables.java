@@ -1,6 +1,8 @@
 package net.corneliuscorn.universalcables;
 
 import com.mojang.logging.LogUtils;
+import net.corneliuscorn.universalcables.block.ModBlocks;
+import net.corneliuscorn.universalcables.block.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
@@ -17,7 +19,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 
-// The value here should match an entry in the META-INF/mods.toml file
 @Mod(UniversalCables.MOD_ID)
 public class UniversalCables
 {
@@ -29,6 +30,9 @@ public class UniversalCables
     public UniversalCables(FMLJavaModLoadingContext context)
     {
         IEventBus modEventBus = context.getModEventBus();
+
+        ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
